@@ -1,15 +1,16 @@
 const path = require('path');
-const routes = require('./controllers');
-const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const express = require('express');
 const session = require('express-session');
+require('dotenv').config();
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3000;
+const helpers = require('./utils/helpers');
+
 const hbs = exphbs.create({ helpers });
 
 const sess = {
@@ -27,12 +28,12 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(experss.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
+app.use(require('./controllers'));
 
-sequelize({ force: false }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening on http://localhost:' + PORT));
 })
