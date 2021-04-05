@@ -4,4 +4,6 @@ const withAuth = (req, res, next) => {
     } else {
         next();
     }
-}
+};
+
+module.exprts = withAuth;

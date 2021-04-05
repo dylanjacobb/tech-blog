@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -7,6 +7,7 @@ router.get('/', async (req, res) => {
     const postData = await Post.findAll({
       include: [
         { model: User },
+        { model: Comment},
       ],
     });
 
@@ -21,28 +22,14 @@ router.get('/', async (req, res) => {
   }
 });
 
-// TODO: figure out how to get one post 
-
-// router.get('/post/:id', async (req, res) => {
-//   try {
-//     const postData = await Post.findByPk({
-//       include: [
-//         {
-//           model: User,
-//         },
-//       ],
-//     });
-
-//     const post = postData.get({ plain: true });
-
-//     res.render('post', {
-//       ...post,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.post('/comment', async (req, res) => {
+  try {
+    const commentData = await Comment.create(req.body)
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
