@@ -22,6 +22,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+// router.get('/home', withAuth, async (req, res) => {
+//   try {
+//     const homeRoute =
+//   }
+// })
+
 router.post('/comment', async (req, res) => {
   try {
     const commentData = await Comment.create(req.body)
