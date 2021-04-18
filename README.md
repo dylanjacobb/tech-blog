@@ -3,12 +3,14 @@
 ## **Project Description**
 a tech blog that allows users to create an account and create/view tech releated posts!
 
+---
+
 ## **User Story**
 * AS A developer who writes about tech
 * I WANT a CMS-style blog site
 * SO THAT I can publish articles, blog posts, and my thoughts and opinions
 
-
+---
 
 ## **Acceptance Criteria**
 * GIVEN a CMS-style blog site
@@ -44,7 +46,3 @@ a tech blog that allows users to create an account and create/view tech releated
 * THEN I am signed out of the site
 * WHEN I am idle on the page for more than a set time
 * THEN I am automatically signed out of the site 
-
-
-TODO: image of deployed website here
-TODO: link to deployed website here
