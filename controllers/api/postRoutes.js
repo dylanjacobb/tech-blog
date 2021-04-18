@@ -35,7 +35,6 @@ const withAuth = require('../../utils/auth');
   });
 
   // TODO: how to edit a comment (update)?
-
   router.delete('/post/:id', async (req, res) => {
     try {
       const postData = await Post.destroy({

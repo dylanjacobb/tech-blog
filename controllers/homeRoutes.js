@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [
-        { model: User },
+        { model: User, attributes: ['username'] },
         { model: Comment},
       ],
     });
@@ -22,13 +22,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/home', withAuth, async (req, res) => {
-//   try {
-//     const homeRoute =
-//   }
-// })
-
-router.post('/comment', async (req, res) => {
+router.post('/comment', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.create(req.body)
     res.status(200).json(commentData);
@@ -53,6 +47,12 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+// FIXME:
+router.get('/dashboard', withAuth, (req, res) => {
+  return;
+  res.render('dashboard');
 });
 
 module.exports = router;

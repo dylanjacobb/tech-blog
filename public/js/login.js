@@ -7,6 +7,7 @@ const loginHandler = async (event) => {
   const password = document.querySelector('#password-login').value.trim();
   console.log(email, password);
   if (email && password) {
+    //   FIXME:
       const response = await fetch('/api/users/login', {
           method: 'POST',
           body: JSON.stringify({ email, password }),
