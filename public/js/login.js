@@ -1,11 +1,9 @@
-// LOGIN function
+// referenced group project
+// login
 const loginHandler = async (event) => {
   event.preventDefault();
-
-  // Get values from login form
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
-  console.log(email, password);
   if (email && password) {
       const response = await fetch('/api/users/login', {
           method: 'POST',
@@ -19,11 +17,9 @@ const loginHandler = async (event) => {
   }
 };
 
-// SIGNUP Function
+// signup
 const signupFormHandler = async (event) => {
   event.preventDefault();
-
-  // Get values from signup form
   const username = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();

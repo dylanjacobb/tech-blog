@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// referenced from group project
 router.post('/signup', async (req, res) => {
   try {
     const newUser = await User.create({
@@ -32,14 +33,14 @@ router.post('/login', async (req, res) => {
     if (!newUser) {
       res
         .status(400)
-        .json({ message: 'Incorrect username/email/password, please try again' });
+        .json({ message: 'Incorrect email/password, please try again' });
       return;
     }
 
     const validPassword = await newUser.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect username/email/password, please try again' });
+      res.status(400).json({ message: 'Incorrect email/password, please try again' });
       return;
     }
 
@@ -66,7 +67,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      req.logout();
+      req.logut();
       res.redirect('/login');
       res.status(204).end();
     });

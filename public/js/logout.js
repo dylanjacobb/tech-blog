@@ -1,3 +1,4 @@
+// referenced group project
 const logoutFormHandler = async () => {
   const response = await fetch('/api/users/logout', {
       method: 'POST',
