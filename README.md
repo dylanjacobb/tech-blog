@@ -5,6 +5,14 @@ a tech blog that allows users to create an account and create/view tech releated
 
 ---
 
+![Main](images/main.png)
+
+---
+
+![login](images/login.png)
+
+---
+
 ## **User Story**
 * AS A developer who writes about tech
 * I WANT a CMS-style blog site
@@ -46,3 +54,4 @@ a tech blog that allows users to create an account and create/view tech releated
 * THEN I am signed out of the site
 * WHEN I am idle on the page for more than a set time
 * THEN I am automatically signed out of the site 
+
